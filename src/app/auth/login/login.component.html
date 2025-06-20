@@ -1,0 +1,79 @@
+<div class="login-container">
+  <!-- Left Image -->
+  <div class="left-image">
+    <img src="/assets/photo.jpg" alt="Bookstore" />
+  </div>
+
+  <!-- Right Form -->
+  <div class="right-form">
+    <div class="form-box">
+      <img src="/assets/logo.png" alt="Logo" class="logo" />
+
+      <p class="welcome-text">Welcome back!</p>
+      <h3 class="login-title">Login to your account</h3>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+        <mat-form-field appearance="outline" class="full-width" >
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Enter your email" />
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+  Email is required.
+</mat-error>
+<mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+  Please enter a valid email.
+</mat-error>
+<mat-error *ngIf="loginForm.get('email')?.hasError('pattern')">
+  Please enter a properly formatted email.
+</mat-error>
+        </mat-form-field>
+
+
+     <mat-form-field appearance="outline" class="full-width" style="margin-top: 15px;">
+  <mat-label>Password</mat-label>
+  <input
+    matInput
+    [type]="hidePassword ? 'password' : 'text'"
+    formControlName="password"
+    required
+  />
+  <!-- Only ONE button with icon -->
+  <button
+    mat-icon-button
+    matSuffix
+    type="button"
+    (click)="hidePassword = !hidePassword"
+    aria-label="Toggle password visibility"
+  >
+    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
+
+  <!-- Validation errors -->
+  <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+    Password is required.
+  </mat-error>
+  <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+    Password must be at least 8 characters.
+  </mat-error>
+  <mat-error *ngIf="loginForm.get('password')?.hasError('maxlength')">
+    Password must be no more than 16 characters.
+  </mat-error>
+  <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')">
+    Password must contain uppercase, lowercase, number, and special character.
+  </mat-error>
+</mat-form-field>
+
+        <mat-checkbox class="remember-me" style="margin-top: 18px;"><span style="color:#6251dd;">Remember Me</span> </mat-checkbox>
+
+
+     <button mat-flat-button color="primary"class="full-width login-btn"type="submit"[disabled]="loginForm.invalid">
+  Login
+</button>
+
+
+        <button mat-stroked-button color="primary" class="full-width register-btn" routerLink="/auth/register" type="button">
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

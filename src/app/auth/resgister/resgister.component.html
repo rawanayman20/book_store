@@ -1,0 +1,120 @@
+<div class="login-container">
+  <div class="left-image">
+    <img src="/assets/photo.jpg" alt="Background Image" />
+  </div>
+
+  <div class="right-form">
+    <div class="form-box">
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+
+      <p class="welcome-text">Create new account</p>
+      <h2 class="login-title">Register</h2>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmitUser(registerForm)">
+        <div class="name-fields" style="display: flex; gap: 1rem;">
+          <!-- First Name -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" />
+            <mat-error *ngIf="registerForm.get('first_name')?.hasError('required')">
+              First name is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('first_name')?.hasError('pattern')">
+              Only letters are allowed
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Last Name -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" />
+            <mat-error *ngIf="registerForm.get('last_name')?.hasError('required')">
+              Last name is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('last_name')?.hasError('pattern')">
+              Only letters are allowed
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Email -->
+        <mat-form-field appearance="outline" class="full-width" style="margin-top: 15px;">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" />
+          <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+            Enter a valid email
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+ <mat-form-field appearance="outline" class="full-width">
+  <mat-label>Password</mat-label>
+
+  <input
+    matInput
+    [type]="hidePassword ? 'password' : 'text'"
+    formControlName="password"
+  />
+
+  <!-- ✅ Only ONE toggle button -->
+  <button
+    mat-icon-button
+    matSuffix
+    type="button"
+    (click)="hidePassword = !hidePassword"
+    aria-label="Toggle password visibility"
+  >
+    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
+
+  <!-- Validation messages -->
+  <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+    Password is required
+  </mat-error>
+  <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
+    Minimum 6 characters required
+  </mat-error>
+  <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">
+    Must include uppercase, lowercase and a number
+  </mat-error>
+</mat-form-field>
+
+
+        <!-- Role -->
+        <mat-form-field appearance="outline" class="full-width" style="margin-top: 10px;">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="registerForm.get('role')?.hasError('required')">
+            Role is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <button [disabled]="registerForm.invalid"
+          mat-raised-button
+          color="accent"
+          class="login-btn full-width"
+          type="submit"
+        >
+          Register
+        </button>
+
+        <!-- Login Redirect Button -->
+        <button
+          mat-stroked-button
+          color="primary"
+          class="full-width register-btn"
+          type="button"
+          (click)="navigateToLogin()"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
