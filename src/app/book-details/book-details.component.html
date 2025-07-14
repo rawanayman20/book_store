@@ -1,0 +1,14 @@
+<div *ngIf="bookDetails" class="book-details-container">
+  <mat-card class="book-card">
+    <div class="book-image">
+      <img src="assets/book.png" alt="Book Cover">
+    </div>
+    <div class="book-info">
+      <h2>{{ bookDetails.name }}</h2>
+      <p class="author">By {{ bookDetails.author }}</p>
+      <p class="description">{{ bookDetails.description }}</p>
+      <p class="price">Price: ${{ bookDetails.price }}</p>
+      <button mat-raised-button color="primary">Add to Cart</button>
+    </div>
+  </mat-card>
+</div>

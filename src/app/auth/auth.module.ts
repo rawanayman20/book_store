@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 const routes: Routes = [{path:'',redirectTo:"login",pathMatch:"full"},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: ResgisterComponent },
-  { path: 'forget-password', component: ForgetPasswordComponent },
+  { path: 'forgot-password', component: ForgetPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent},
   { path: 'change-password', component: ChangePasswordComponent },
 ];

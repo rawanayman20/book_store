@@ -8,10 +8,11 @@ import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { globalInterceptor } from './global.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),provideHttpClient(),importProvidersFrom(AuthModule), importProvidersFrom(
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),importProvidersFrom(AuthModule,SharedModule), importProvidersFrom(
       AuthModule,
       BrowserAnimationsModule,
       ToastrModule.forRoot()

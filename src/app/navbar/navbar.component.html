@@ -1,0 +1,35 @@
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="contact">
+    <mat-icon fontIcon="call" class="icon-phone"></mat-icon>
+    <span>+91 8374902234</span>
+  </div>
+  <div class="social-icons">
+    <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+    <i class="fab fa-twitter"></i>
+    <i class="fab fa-blogger-b"></i>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo" />
+  </div>
+  <ul class="nav-links">
+    <li class="active" [routerLink]="['/book']" routerLinkActive="router-link-active" >HOME</li>
+    <li>ABOUT US</li>
+<li routerLink="/all-products" routerLinkActive="active-link">BOOKS</li>
+    <li>NEW RELEASE</li>
+    <li>CONTACT US</li>
+    <li>BLOG</li>
+  </ul>
+  <div class="user-icons">
+    <mat-icon>person</mat-icon>
+    <mat-icon routerLink="/cart">shopping_cart</mat-icon>
+    <mat-icon>favorite_border</mat-icon>
+  </div>
+</nav>

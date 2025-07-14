@@ -1,1 +1,133 @@
-<p>listing works!</p>
+<app-navbar></app-navbar>
+<main style="padding-top: 120px">
+
+<div  class="breadcrumb mat-body-2">
+  HOME / PRODUCTS
+</div>
+
+<div class="product-container">
+
+  <!-- Filter Sidebar -->
+<aside class="sidebar">
+  <!-- Price Filter -->
+  <div class="filter-section">
+    <div class="filter-header">
+      <span class="filter-title">Price</span>
+      <mat-icon class="toggle-icon">remove</mat-icon>
+    </div>
+    <hr />
+    <div class="price-filter">
+      <div class="input-group">
+        <span class="currency">$</span>
+        <input type="number" />
+      </div>
+      <span class="to-text">to</span>
+      <div class="input-group">
+        <span class="currency">$</span>
+        <input type="number" />
+      </div>
+    </div>
+    <button mat-flat-button color="primary" class="filter-button">Filter</button>
+  </div>
+
+  <!-- Collapsible Filters -->
+  <div class="filter-group" *ngFor="let filter of ['Product type', 'Availability', 'Brand', 'Color', 'Material']">
+    <hr />
+    <div class="filter-header">
+      <span class="filter-title">{{ filter }}</span>
+      <mat-icon class="toggle-icon">add</mat-icon>
+    </div>
+  </div>
+</aside>
+
+  <!-- Products Section -->
+  <section class="products">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="sort-controls">
+        <!-- Sort By -->
+        <mat-form-field appearance="fill" style="margin-left: 50px;">
+          <mat-label style="color: blueviolet;">Sort by</mat-label>
+          <mat-select [(value)]="sortOption" (selectionChange)="sortBooks()">
+            <mat-option value="az">Alphabetically, A-Z</mat-option>
+            <mat-option value="za">Alphabetically, Z-A</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Result Count -->
+        <span style="margin-left: 20px;margin-right: 20px;">Showing 1–{{ pagedBooks.length }} of {{ books.length }} results</span>
+
+        <!-- Show per page -->
+        <mat-form-field appearance="fill">
+          <mat-label>Show</mat-label>
+          <mat-select [(value)]="pageSize" (selectionChange)="onPageChangeSize()">
+            <mat-option [value]="6">6</mat-option>
+            <mat-option [value]="12">12</mat-option>
+            <mat-option [value]="24">24</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Grid/List Toggle -->
+      <div class="view-toggle">
+        <button mat-icon-button [color]="isGridView ? 'primary' : ''" (click)="toggleView('grid')">
+          <mat-icon>grid_view</mat-icon>
+        </button>
+        <button mat-icon-button [color]="!isGridView ? 'primary' : ''" (click)="toggleView('list')">
+          <mat-icon>view_list</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid/List -->
+    <div [ngClass]="isGridView ? 'grid' : 'list'">
+      <mat-card class="product-card" *ngFor="let book of pagedBooks">
+        <img src="assets/book3 4.png" alt="Book Cover" />
+        <div class="card-body">
+          <mat-card-content>
+            <h4>{{ book.name }}</h4>
+            <p class="author">{{ book.author }}</p>
+            <p class="price">$ {{ book.price }}</p>
+          </mat-card-content>
+ <button
+      *ngIf="!showQuantityInput[book._id]"
+      mat-flat-button
+      color="accent"
+      style="background-color: #ED553B;"
+      (click)="showInput(book._id)"
+    >
+      Add to Cart
+    </button>
+
+    <!-- Show Quantity Input and Confirm Button -->
+    <div *ngIf="showQuantityInput[book._id]" class="add-to-cart-form">
+      <input
+        type="number"
+        min="1"
+        [(ngModel)]="quantities[book._id]"
+        placeholder="Quantity"
+        class="quantity-input"
+      />
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="confirmAddToCart(book)"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+      </mat-card>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator [length]="books.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[6, 12, 24, 36]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+  </section>
+</div>
+</main>
+<app-footer></app-footer>

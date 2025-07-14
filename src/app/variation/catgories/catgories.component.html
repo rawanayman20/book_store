@@ -1,0 +1,21 @@
+<section class="categories-section" *ngIf="displayedCategories.length">
+  <div class="header-with-actions">
+    <div class="header-text">
+      <small class="subtitle">Categories</small>
+      <h2>Explore our Top Categories</h2>
+    </div>
+   
+  </div>
+
+  <div class="cards">
+    <div class="card" *ngFor="let category of displayedCategories">
+      <img src="assets/Rectangle 11 (2).png" alt="Category Cover" />
+      <h4>{{ category.title }}</h4>
+    </div>
+  </div>
+
+  <div class="view-more">
+    <button *ngIf="canShowMore" mat-stroked-button color="primary" (click)="showMore()">Show More →</button>
+    <button *ngIf="canShowLess" mat-stroked-button color="warn" (click)="showLess()">Show Less ←</button>
+  </div>
+</section>

@@ -32,6 +32,7 @@ password:new FormControl(null,[Validators.required,Validators.minLength(6),Valid
       localStorage.setItem('accessToken',res.data.accessToken)
       
       this.toaster.success(res.message, 'Success!');
+this.router.navigate(['/book']); // Navigate to /cart page
     },
     
     error:(err)=>{

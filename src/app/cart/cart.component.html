@@ -1,1 +1,109 @@
-<p>cart works!</p>
+<app-navbar></app-navbar>
+<main style="padding-top: 120px">
+
+<div class="cart-container">
+
+  <!-- Product Table -->
+  <div class="products-details mat-elevation-z2">
+    <h4>Products Details</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Num</th>
+          <th>Book</th>
+          <th>Amount</th>
+          <th>Cost</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems; index as i">
+          <td>{{ i + 1 | number: '2.0' }}</td>
+          <td class="book-cell">
+        <img src="assets/book3 4.png" alt="Book Cover" />
+            <span>{{ item.name }}</span>
+          </td>
+          <td>
+            <div class="quantity-box">
+            <button mat-icon-button (click)="updateQuantity(item, -1)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            {{ item.quantity }}
+            <button mat-icon-button (click)="updateQuantity(item, 1)">
+              <mat-icon>add</mat-icon>
+            </button>
+            </div>
+          </td>
+          <td>{{ item.book?.price | currency:'USD' }} </td>
+          <td>{{ item.book?.price * item.quantity| currency:'USD'  }} </td>
+          <td>
+  <button mat-icon-button color="warn" (click)="deleteItem(item)">
+    <mat-icon>close</mat-icon>
+  </button>
+</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Total Cost Card -->
+  <div class="cart-total mat-elevation-z2">
+    <h4>Cart Total Cost</h4>
+    <div class="line"><span>Total</span><span>{{ total  | currency:'USD'}} </span></div>
+    <div class="line"><span>Tax</span><span>{{ tax  | currency:'USD'}} </span></div>
+    <div class="line bold"><span>Total Cost</span><span>{{ totalCost  | currency:'USD'}} </span></div>
+    <button mat-flat-button color="warn" class="proceed-btn">
+      Proceed <mat-icon>shopping_cart</mat-icon>
+    </button>
+    
+  </div>
+
+  <!-- Shipping Data -->
+  <div class="shipping-data mat-elevation-z2">
+    <h4>Shipping Data</h4>
+  <form [formGroup]="shippingForm">
+  <div class="form-grid">
+    <mat-form-field appearance="fill">
+      <mat-label>User Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <input matInput formControlName="country" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phone" />
+    </mat-form-field>
+  </div>
+</form>
+
+<!-- Proceed to Checkout Button -->
+<button mat-flat-button color="warn" (click)="proceedToCheckout()">
+  Proceed <mat-icon>shopping_cart</mat-icon>
+</button>
+
+  </div>
+
+</div>
+</main>
+<app-footer></app-footer>

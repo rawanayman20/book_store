@@ -1,0 +1,123 @@
+.categories-section {
+  padding: 60px 20px;
+background-color: #ffffff;
+
+  .header-with-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+
+    .header-text {
+      text-align: left;
+
+      .subtitle {
+        color: #f25c5c;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+      }
+
+      h2 {
+        color: #2d2f91;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 10px 0;
+      }
+    }
+
+   
+  }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 cards per row */
+  gap: 30px;
+  max-width: 1000px; /* control width */
+  margin: 0 auto; /* center the grid container */
+  justify-items: center; /* center each card horizontally */
+}
+
+.card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 380px; /* limit individual card width */
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    gap: 70px;
+  }
+
+  h4 {
+    margin: 16px;
+    color: #2d2f91;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+}
+
+
+  .view-more {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    button {
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: 1px solid #3b2f86;
+      color: #3b2f86;
+      background: white;
+
+      &:hover {
+        background-color: #3b2f86;
+        color: white;
+      }
+    }
+  }
+}
+
+/* 🔁 Responsive Layouts */
+@media (max-width: 992px) {
+  .categories-section {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-with-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .categories-section {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+
+    .header-text h2 {
+      font-size: 1.6rem;
+    }
+  }
+}

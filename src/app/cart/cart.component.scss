@@ -1,0 +1,217 @@
+.cart-container {
+  max-width: 1280px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "products cart-total"
+    "shipping cart-total";
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "products"
+      "cart-total"
+      "shipping";
+  }
+
+  .products-details {
+    grid-area: products;
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+      background: linear-gradient(#FFE5E5,#F5FFFE );
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.quantity-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  .qty-number {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 500;
+    color: #333;
+  }
+
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .qty-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; // override Angular Material
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+
+    mat-icon {
+      font-size: 20px;
+      line-height: 1;
+      color: #393280;
+    }
+
+    &:hover {
+      background-color: #e0e0ff;
+    }
+  }
+
+  .qty-value {
+    font-weight: 600;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+  }
+}
+
+
+}
+
+    h4 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+     
+        th {
+          padding: 12px;
+          text-align: center;
+          font-weight: 600;
+          color: #555;
+          font-size: 15px;
+          border-bottom: 1px solid #ddd;
+        }
+      }
+
+      tbody td {
+        padding: 14px 10px;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: 1px solid #eee;
+        color: #444;
+
+        &:last-child {
+          text-align: center;
+        }
+      }
+
+      .book-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        img {
+          width: 50px;
+          height: 70px;
+          object-fit: cover;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+          font-weight: 500;
+          color: #222;
+          max-width: 120px;
+          text-align: left;
+        }
+      }
+
+      button {
+        color: #e53935;
+      }
+    }
+  }
+
+  .cart-total {
+    grid-area: cart-total;
+      background: linear-gradient(#FFE5E5,#F5FFFE );
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-self: start;
+
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      color: #444;
+
+      &.bold {
+        font-weight: 600;
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+      }
+    }
+
+    .proceed-btn {
+      margin-top: 20px;
+      width: 100%;
+      font-weight: 600;
+      background-color:#393280 !important; // primary red
+      color: white;
+
+      mat-icon {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .shipping-data {
+    grid-area: shipping;
+      background: linear-gradient(#FFE5E5,#F5FFFE );
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+
+      mat-form-field {
+        width: 100%;
+        color: #393280;
+
+        // input {
+        //   background: #fafafa;
+        // }
+      }
+    }
+  }
+}

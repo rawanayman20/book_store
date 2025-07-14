@@ -1,1 +1,215 @@
-<p>variation works!</p>
+<app-navbar></app-navbar>
+<!-- Book Slider -->
+<div class="slider-container" *ngIf="books.length">
+  <div class="slider-body">
+
+    <!-- Left Arrow -->
+    <button mat-icon-button (click)="prev()" aria-label="Previous">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <!-- Book Slide -->
+    <div class="book-card">
+      <div class="book-info">
+        <h1 class="title">{{ books[currentIndex].name }}</h1>
+        <p class="description">
+          {{ books[currentIndex].description }}
+        </p>
+        <button mat-stroked-button color="primary" [routerLink]="['/book', books[currentIndex]._id]">Read More →</button>
+
+        <!-- Dots -->
+        <div class="dots">
+          <span *ngFor="let b of books; let i = index"
+                [class.active]="i === currentIndex">
+          </span>
+        </div>
+      </div>
+
+      <!-- Book Image -->
+      <div class="book-image">
+        <img [src]="books[currentIndex].imagePath || 'assets/book.png'" alt="Book Cover">
+      </div>
+    </div>
+
+    <!-- Right Arrow -->
+    <button mat-icon-button (click)="next()" aria-label="Next">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>
+
+
+<!-- BOOK catgories -->
+<app-catgories></app-catgories>
+
+
+<!-- Book Section -->
+<div class="books-section">
+  <div class="section-header">
+    <p class="subtitle">Some Quality Items</p>
+    <h2 class="title">New Release Books</h2>
+  </div>
+
+  <div class="books-grid">
+    <mat-card class="book-card" *ngFor="let book of books">
+      <div class="book-image">
+        <img src="assets/book3 4.png" alt="Book Cover" />
+      </div>
+
+      <mat-card-content>
+        <h3 class="book-title">{{ book.name }}</h3>
+        <p class="book-author">{{ book.author }}</p>
+        <p class="book-price">${{ book.price.toFixed(2) }}</p>
+      </mat-card-content>
+
+      <div class="add-to-cart" *ngIf="book.addToCart">
+        <button mat-flat-button color="accent">Add to Cart</button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div class="footer">
+    <button mat-stroked-button color="primary" [routerLink]="['/all-products']">
+      View All Products →
+    </button>
+  </div>
+</div>
+
+
+
+<!-- Featured Book Slider -->
+<div class="book-featured-wrapper">
+  <div class="book-card">
+    <!-- Book Image -->
+    <div class="book-image">
+      <img src=" assets/book3 4.png" alt="Book Cover" />
+    </div>
+
+    <!-- Book Info -->
+    <div class="book-info">
+      <h1 class="featured-label">Featured Book</h1>
+      <p class="author">by {{ books[currentIndex]?.author || 'Author Name' }}</p>
+      <h1 class="title">{{ books[currentIndex]?.title || 'Book Title' }}</h1>
+      <p class="description">{{ books[currentIndex]?.description || 'Lorem ipsum dolor sit amet, consectetur.' }}</p>
+      <p class="price">${{ books[currentIndex]?.price?.toFixed(2) || '0.00' }}</p>
+      <button mat-stroked-button color="primary">View More →</button>
+    </div>
+
+    <!-- Arrows -->
+    <button class="arrow left" mat-icon-button (click)="prev()" aria-label="Previous">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button class="arrow right" mat-icon-button (click)="next()" aria-label="Next">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <!-- Dots -->
+  <div class="slider-dots">
+    <span
+      *ngFor="let book of books; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goTo(i)">
+    </span>
+  </div>
+</div>
+
+
+
+<!-- Subscribe-->
+<div class="deal-banner">
+  <div class="deal-text">
+    <h2>All books are 50% off now!</h2>
+    <h2>Don't miss such a deal!</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.
+    </p>
+
+    <div class="countdown">
+      <div class="time-box"><span>{{ days }}</span><p>DAYS</p></div>
+      <div class="time-box"><span>{{ hours }}</span><p>HOUR</p></div>
+      <div class="time-box"><span>{{ minutes }}</span><p>MINT</p></div>
+      <div class="time-box"><span>{{ seconds }}</span><p>SEC</p></div>
+    </div>
+  </div>
+
+  <div class="deal-image">
+    <img src="assets/Unsplash.png" alt="Book Stack" />
+  </div>
+</div>
+
+
+
+<!--Subscibe section  -->
+<div class="newsletter-container">
+  <h2>Subscibe to Our Newsletter</h2>
+  <p>
+    Sed eu feugiat amet, libero ipsum enim pharetra hac dolor sit amet, consectetur.
+    Elit adipiscing enim pharetra hac.
+  </p>
+
+  <div class="email-box">
+    <mat-icon>email</mat-icon>
+    <input type="email" placeholder="youremail123@gmail.com" [(ngModel)]="email" />
+    <button mat-raised-button color="warn" >SUBSCRIBE</button>
+  </div>
+</div>
+
+
+
+<!-- artical -->
+<section class="latest-articles">
+  <div class="header text-center">
+    <small class="subtitle">Read Our Articles</small>
+    <h2 class="title">Latest Articles</h2>
+  </div>
+
+  <div class="article-grid">
+    <div class="article-card">
+      <img src="assets/frist.jpg" alt="Article 1" />
+      <div class="date">2 Aug, 2021</div>
+      <h4>Reading Books Always Makes The Moments Happy</h4>
+      <hr />
+      <div class="social-icons">
+       <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+    <i class="fab fa-twitter"></i>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <img src="assets/second.png" alt="Article 2" />
+      <div class="date">2 Aug, 2021</div>
+      <h4>Reading Books Always Makes The Moments Happy</h4>
+      <hr />
+      <div class="social-icons">
+        <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+    <i class="fab fa-twitter"></i>
+      </div>
+    </div>
+
+    <div class="article-card">
+      <img src="assets/third.jpg" alt="Article 3" />
+      <div class="date">2 Aug, 2021</div>
+      <h4>Reading Books Always Makes The Moments Happy</h4>
+      <hr />
+      <div class="social-icons">
+       <i class="fab fa-facebook-f"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-linkedin-in"></i>
+    <i class="fab fa-twitter"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="read-all-btn">Read All Articles →</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+

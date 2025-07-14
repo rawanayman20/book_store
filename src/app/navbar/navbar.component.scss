@@ -1,0 +1,106 @@
+/* Make sure to wrap both bars in a container or stack them correctly */
+
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Stay above everything else */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3b2f86;
+  color: white;
+  padding: 8px 24px;
+  font-size: 14px;
+
+  .contact {
+    display: flex;
+    align-items: center;
+
+    .icon-phone {
+      margin-right: 8px;
+      font-size: 18px;
+    }
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 16px;
+
+    i {
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 40px; /* height of top-bar */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #333;
+      cursor: pointer;
+      position: relative;
+
+      &.active {
+        color: #ff4c4c;
+        font-weight: 700;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background: #ff4c4c;
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .user-icons {
+    display: flex;
+    gap: 16px;
+
+    mat-icon {
+      font-size: 22px;
+      cursor: pointer;
+      color: #3b2f86;
+    }
+  }
+}
