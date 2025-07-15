@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomerService } from '../../customer.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -23,7 +24,7 @@ hideNew = true;
     // Min 6 chars, at least 1 uppercase, 1 lowercase, 1 number
   ]), 
 });
-  constructor(private _customerService:CustomerService, private toastr:ToastrService){}
+  constructor(private _customerService:CustomerService, private toastr:ToastrService,private router:Router){}
   ngOnInit(): void {
   }
 
@@ -37,6 +38,8 @@ hideNew = true;
       next: (res) => {
          this.toastr.success(res.message, 'Success!');
         console.log('Record Updated:', res);
+        this.router.navigate(['/auth/login']);
+
 
       },
       error: (err) => {
