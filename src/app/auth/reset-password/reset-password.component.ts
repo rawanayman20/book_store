@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -29,7 +30,7 @@ export class ResetPasswordComponent implements OnInit {
 
 
 });
-  constructor(private _customerService:CustomerService, private toastr:ToastrService){}
+  constructor(private _customerService:CustomerService, private toastr:ToastrService,private router:Router){}
   ngOnInit(): void {
     
   }
@@ -40,7 +41,7 @@ onSubmit(data: FormGroup) {
       next: (res) => {
          this.toastr.success(res.message, 'Success!');
         console.log('password reset:', res);
-
+this.router.navigate(['/auth/login']);
       },
       error: (err) => {
               this.toastr.error(err.error.message, 'Sorry!');
