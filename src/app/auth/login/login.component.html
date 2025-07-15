@@ -62,7 +62,14 @@
   </mat-error>
 </mat-form-field>
 
-        <mat-checkbox class="remember-me" style="margin-top: 18px;"><span style="color:#6251dd;">Remember Me</span> </mat-checkbox>
+       <mat-checkbox class="remember-me" style="margin-top: 18px;">
+          <span style="color:#6251dd;">Remember Me</span>
+        </mat-checkbox>
+
+        
+        <div style="text-align: right; margin: 8px 0;">
+          <a routerLink="/auth/forgot-password" style="color: #6251dd; text-decoration: none;">Forgot Password?</a>
+        </div>
 
 
      <button mat-flat-button color="primary"class="full-width login-btn"type="submit"[disabled]="loginForm.invalid">
