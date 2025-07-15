@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from '../../customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -16,7 +17,7 @@ forgotForm =new FormGroup({
 })
 
 
-  constructor(private toastr:ToastrService,private _customerService:CustomerService){
+  constructor(private toastr:ToastrService,private _customerService:CustomerService,private router:Router){
 
   }
   ngOnInit(): void {
@@ -28,7 +29,7 @@ forgotForm =new FormGroup({
         next: (res) => {
           console.log(res)
                 this.toastr.success(res.message, 'Success!');
-
+this.router.navigate(['/auth/reset-password']);
         }
         ,
         error: (err) => 
